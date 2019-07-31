@@ -73,7 +73,7 @@ resource "aws_route_table_association" "a" {
   route_table_id = "${aws_route_table.public.id}"
 }
 
-resource "aws_route_table_association" "a" {
+resource "aws_route_table_association" "b" {
   subnet_id      = "${aws_subnet.private_subnet.id}"
   route_table_id = "${aws_route_table.private.id}"
 }
