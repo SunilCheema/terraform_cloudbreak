@@ -47,7 +47,7 @@ resource "aws_route_table" "public" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.main.id}"
+    gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
   tags = {
@@ -60,16 +60,11 @@ resource "aws_route_table" "private" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.main.id}"
-  }
-
-  route {
-    ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = "${aws_egress_only_internet_gateway.foo.id}"
+    gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
   tags = {
-    Name = "main"
+    Name = "terraformWork"
   }
 }
 
