@@ -68,6 +68,25 @@ resource "aws_route_table" "private" {
   }
 }
 
+resource "aws_route_table_association" "a" {
+  subnet_id      = "${aws_subnet.public_subnet.id}"
+  route_table_id = "${aws_route_table.public.id}"
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = "${aws_subnet.private_subnet.id}"
+  route_table_id = "${aws_route_table.private.id}"
+}
+
+resource "aws_eip" "lb" {
+  vpc      = true
+}
+
+resource "aws_nat_gateway" "natGateway" {
+  allocation_id = "${aws_eip.lb.id}"
+  subnet_id     = "${aws_subnet.public.id}"
+}
+
 resource "aws_instance" "example" {
   
 ami           = "ami-b374d5a5"
