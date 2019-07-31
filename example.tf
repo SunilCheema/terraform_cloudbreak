@@ -7,9 +7,7 @@ region     = "us-east-1"
 
 resource "aws_vpc" "terraform2" {
 
-  cidr_block       = "10.0.0.0/16"
-
-  
+cidr_block       = "10.0.0.0/16"
 tags = {
     Name = "terraformWork"
   }
@@ -28,7 +26,7 @@ tags = {
 
 resource "aws_subnet" "private_subnet" {
 vpc_id     = "${aws_vpc.terraform2.id}"
-cidr_block = "10.0.1.0/24"
+cidr_block = "10.0.2.0/24"
   
 tags = {
     Name = "terraformWork"
